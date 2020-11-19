@@ -21,7 +21,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
-        "nunomaduro/phpinsights": "^1.14",
+        "nunomaduro/phpinsights": "dev-master",
         "pestphp/pest": "^0.3",
         "phpstan/phpstan": "^0.12"
     },
