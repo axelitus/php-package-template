@@ -198,3 +198,7 @@ if confirm 'Let this script delete itself (since you only need it once)?'; then
     echo "Delete $0 !"
     rm -- "$0"
 fi
+
+if [[ -d .git ]] && confirm 'Make initial commit?'; then
+    git add . && git commit --gpg-sign -m init
+fi
