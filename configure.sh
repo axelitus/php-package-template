@@ -115,20 +115,22 @@ author_username=$(ask_question "Author Github username" "$username_guess")
 # Vendor Name
 vendor_name_unsanitized=$(ask_question "Vendor name" "$(pascal "$author_username")")
 vendor_name="$(tr '[:lower:]' '[:upper:]' <<<"${vendor_name_unsanitized:0:1}")${vendor_name_unsanitized:1}"
-composer_vendor=$(kebab "$vendor_name")
+vendor_pascal=$(pascal "$vendor_name")
+vendor_kebab=$(kebab "$vendor_name")
 
 # Package Name
 current_directory=$(pwd)
 folder_name=$(basename "$current_directory")
 package_name=$(ask_question "Package name" "$(pascal "$folder_name")")
-composer_package=$(kebab "$package_name")
+package_pascal=$(pascal "$package_name")
+package_kebab=$(kebab "$package_name")
 
 # Package Description
 package_description=$(ask_question "Package description" "")
 
 ## Repo Name
-repo_account=$(ask_question "Repo account" "$author_username")
-repo_name=$(ask_question "Repo name" "$composer_package")
+repo_account=$(ask_question "Repo account" "$vendor_kebab")
+repo_name=$(ask_question "Repo name" "$folder_name")
 
 ## Security email
 security_email=$(ask_question "Security policy email" "$author_email")
@@ -138,15 +140,18 @@ echo -e "Information given:"
 echo -e "  Author:"
 echo -e "    Name: $author_name"
 echo -e "    Email: $author_email"
-echo -e "    Github username: $author_username)"
+echo -e "    Github username: $author_username"
 echo -e "  Vendor:"
 echo -e "    Name: $vendor_name"
-echo -e "    Composer: $composer_vendor"
+echo -e "    Pascal: $vendor_pascal"
+echo -e "    Kebab: $vendor_kebab"
 echo -e "  Package:"
 echo -e "    Name: $package_name"
-echo -e "    Composer: $composer_vendor/$composer_package"
+echo -e "    Pascal: $package_pascal"
+echo -e "    Kebab: $package_kebab"
 echo -e "    Description: $package_description"
-echo -e "  Namespace: $vendor_name\\$package_name"
+echo -e "  Composer: $vendor_kebab/$package_kebab"
+echo -e "  Namespace: $vendor_pascal\\$package_pascal"
 echo -e "  Repo: https://github.com/$repo_account/$repo_name"
 echo -e "  Security policy email: $security_email"
 echo
@@ -157,7 +162,7 @@ if ! confirm "Modify files?"; then
     $safe_exit 1
 fi
 
-files=$(grep -E -r -l -i ":author|:vendor|:package|:composer|:repo|:security" --exclude-dir=vendor ./* | grep -v "$script_name")
+files=$(grep -E -r -l -i ":author|:vendor|__Vendor__|:package|__Package__|:composer|:repo|:security" --exclude-dir=vendor --exclude-dir=.git --exclude-dir=.idea . | grep -v "$script_name")
 echo
 
 for file in $files; do
@@ -169,11 +174,11 @@ for file in $files; do
         sed "s/:author_username/$author_username/g" |
         sed "s/:author_email/$author_email/g" |
         sed "s/:vendor_name/$vendor_name/g" |
-        sed "s/:__Vendor__/$vendor_name/g" |
-        sed "s/:composer_vendor/$composer_vendor/g" |
+        sed "s/__Vendor__/$vendor_pascal/g" |
+        sed "s/:vendor_kebab/$vendor_kebab/g" |
         sed "s/:package_name/$package_name/g" |
-        sed "s/:__Package__/$package_name/g" |
-        sed "s/:composer_package/$composer_package/g" |
+        sed "s/__Package__/$package_pascal/g" |
+        sed "s/:package_kebab/$package_kebab/g" |
         sed "s/:package_description/$package_description/g" |
         sed "s/:repo_account/$repo_account/g" |
         sed "s/:repo_name/$repo_name/g" |
@@ -181,11 +186,11 @@ for file in $files; do
         sed "/^\*\*Note:\*\* Run/d" \
             >"$temp_file"
     rm -f "$file"
-    new_file=$(echo $file | sed -e "s/__Package__/${package_name}/g")
+    new_file=$(echo $file | sed -e "s/__Package__/${package_pascal}/g")
     mv "$temp_file" "$new_file"
 done
 
-if confirm "Execute composer install and check all"; then
+if confirm "Execute composer install and run all checks"; then
     composer install && composer all
 fi
 

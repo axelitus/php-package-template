@@ -1,19 +1,18 @@
 <div align="center">
     <h1>:package_name</h1>
     <p align="center"> 
-        <a href="https://packagist.org/packages/:vendor_name/:package_name"><img alt="Stable Release" src="https://img.shields.io/packagist/v/:vendor_name/:package_name.svg?style=flat-square&label=release&logo=packagist&logoColor=eceff4&colorA=4c566a&colorB=5e81ac"></a>
-        <a href="https://github.com/:vendor_name/:repo_name/actions?query=workflow%3Arun-tests"><img alt="Build Status" src="https://img.shields.io/github/workflow/status/:vendor_name/:repo_name/tests.svg?style=flat-square&label=build&logo=github&logoColor=eceff4&colorA=4c566a&colorB=88c0d0"></a>
-        <a href="https://php.net/releases"><img alt="PHP Version" src="https://img.shields.io/packagist/php-v/:vendor_name/:package_name.svg?style=flat-square&label=php&logo=php&logoColor=eceff4&colorA=4c566a&colorB=b48ead"></a>
-        <a href="https://codeclimate.com/github/:vendor_name/:repo_name"><img alt="Maintainability" src="https://img.shields.io/codeclimate/maintainability/:vendor_name/:repo_name.svg?style=flat-square&label=maintainability&logo=code-climate&logoColor=eceff4&colorA=4c566a&colorB=88c0d0"></a>
-        <a href="https://codeclimate.com/github/:vendor_name/:repo_name"><img alt="Test Coverage" src="https://img.shields.io/codeclimate/coverage/:vendor_name/:repo_name.svg?style=flat-square&label=coverage&logo=code-climate&logoColor=eceff4&colorA=4c566a&colorB=88c0d0"></a>
-        <a href="https://packagist.org/packages/:vendor_name/:package_name"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/:vendor_name/:package_name.svg?style=flat-square&label=downloads&logoColor=eceff4&colorA=4c566a&colorB=88c0d0"></a>
-        <a href="https://github.com/:vendor_name/:repo_name/blob/master/LICENSE.md"><img alt="License" src="https://img.shields.io/github/license/:vendor_name/:repo_name.svg?style=flat-square&label=license&logoColor=eceff4&colorA=4c566a&colorB=a3be8c"></a>
+        <a href="https://packagist.org/packages/:vendor_kebab/:package_kebab"><img alt="Stable Release" src="https://img.shields.io/packagist/v/:vendor_kebab/:package_kebab.svg?style=flat-square&label=release&logo=packagist&logoColor=eceff4&colorA=4c566a&colorB=5e81ac"></a>
+        <a href="https://github.com/:repo_account/:repo_name/actions?query=workflow%3Arun-tests"><img alt="Build Status" src="https://img.shields.io/github/workflow/status/:repo_account/:repo_name/tests.svg?style=flat-square&label=build&logo=github&logoColor=eceff4&colorA=4c566a&colorB=88c0d0"></a>
+        <a href="https://php.net/releases"><img alt="PHP Version" src="https://img.shields.io/packagist/php-v/:vendor_kebab/:package_kebab.svg?style=flat-square&label=php&logo=php&logoColor=eceff4&colorA=4c566a&colorB=b48ead"></a>
+        <a href="https://codeclimate.com/github/:repo_account/:repo_name"><img alt="Maintainability" src="https://img.shields.io/codeclimate/maintainability/:repo_account/:repo_name.svg?style=flat-square&label=maintainability&logo=code-climate&logoColor=eceff4&colorA=4c566a&colorB=88c0d0"></a>
+        <a href="https://codeclimate.com/github/:repo_account/:repo_name"><img alt="Test Coverage" src="https://img.shields.io/codeclimate/coverage/:repo_account/:repo_name.svg?style=flat-square&label=coverage&logo=code-climate&logoColor=eceff4&colorA=4c566a&colorB=88c0d0"></a>
+        <a href="https://packagist.org/packages/:vendor_kebab/:package_kebab"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/:vendor_kebab/:package_kebab.svg?style=flat-square&label=downloads&logoColor=eceff4&colorA=4c566a&colorB=88c0d0"></a>
+        <a href="https://github.com/:repo_account/:repo_name/blob/master/LICENSE.md"><img alt="License" src="https://img.shields.io/github/license/:repo_account/:repo_name.svg?style=flat-square&label=license&logoColor=eceff4&colorA=4c566a&colorB=a3be8c"></a>
     </p>
 </div>
 <hr>
 
-**Note:** Run `./configure.sh` to configure your new package or manually replace `:author_name`, `:author_username`, `:author_email`, `:vendor_name`, `:composer_vendor`, `:package_name`, `:composer_package`, `:package_description`, `:repo_account`, `:repo_name` and `:security_email` with their correct values in 
-[README.md](README.md), [SECURITY.md](.github/SECURITY.md), [composer.json](composer.json), [source files](src), [test files](tests) and then delete this line.
+**Note:** Run `./configure.sh` to configure your new package or manually replace `:author_name`, `:author_username`, `:author_email`, `:vendor_name`, `:vendor_kebab`, `:package_name`, `:package_kebab`, `:package_description`, `:repo_account`, `:repo_name` and `:security_email` with their correct values in [README.md](README.md), [SECURITY.md](.github/SECURITY.md), [composer.json](composer.json), [source files](src), [test files](tests) and then delete this line.
 
 :package_description
 
@@ -25,7 +24,7 @@
 Install this package using Composer:
 
 ```bash
-composer require :vendor_name/:package_name
+composer require :vendor_kebab/:package_kebab
 ```
 
 ## Usage

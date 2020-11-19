@@ -1,5 +1,5 @@
 {
-    "name": ":composer_vendor/:composer_package",
+    "name": ":vendor_kebab/:package_kebab",
     "description": ":package_description",
     "keywords": [
         "norse blue",
@@ -12,7 +12,7 @@
         {
             "name": ":author_name",
             "email": ":author_email",
-            "homepage": ":author_url",
+            "homepage": "https://github.com/:author_username",
             "role": "Developer"
         }
     ],
